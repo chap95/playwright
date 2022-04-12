@@ -1,6 +1,7 @@
 import { PlaywrightTestConfig } from "@playwright/test";
 const config: PlaywrightTestConfig = {
   use: {
+    channel: "chrome",
     headless: false,
     viewport: {
       width: 1280,
