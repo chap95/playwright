@@ -50,14 +50,12 @@ test.describe(" NOSEARCH - visit popup ", () => {
   );
 
   test("should render visit popup at second page", async ({ page }) => {
-    debugger;
     await page.goto("/contents/guide");
     const modal = page.locator(".ns-modal");
     await modal.waitFor({ state: "attached", timeout: 10000 });
     let nosearchDealPopupWrapper = page.locator(
       ".nosearch-deal-main-drawer__wrapper"
     );
-
     expect(await nosearchDealPopupWrapper.count()).toBe(0);
 
     await page.click('a[href="/contents/guide/kitchen/refrigerator"]');
