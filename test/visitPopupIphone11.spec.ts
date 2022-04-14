@@ -1,6 +1,10 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, devices } from "@playwright/test";
+const iphone11 = devices["iPhone 11"];
 
 test.use({
+  ...iphone11,
+  channel: undefined,
+  browserName: "webkit",
   baseURL: "https://nosearch.com",
 });
 
@@ -22,7 +26,6 @@ test.beforeEach(async ({ context, page }) => {
     });
   });
 });
-
 test.describe(" NOSEARCH - visit popup ", () => {
   test.describe(
     "should render visit popup to clients who are new to our service",
@@ -46,15 +49,15 @@ test.describe(" NOSEARCH - visit popup ", () => {
   );
 
   test("should render visit popup at second page", async ({ page }) => {
-    await page.goto("/contents/guide");
+    await page.goto("/recommendation/pick/living/cordless_vacuum_cleaner");
     let nosearchDealPopupWrapper = page.locator(
       ".nosearch-deal-main-drawer__wrapper"
     );
     expect(await nosearchDealPopupWrapper.count()).toBe(0);
-    await page.click(".contents-flex-table-item");
+    await page.click(".pick-product", { timeout: 30000 });
     await page
       .locator(".nosearch-deal-main-drawer__wrapper")
-      .waitFor({ timeout: 5000 });
+      .waitFor({ timeout: 30000 });
     nosearchDealPopupWrapper = page.locator(
       ".nosearch-deal-main-drawer__wrapper"
     );
@@ -67,7 +70,7 @@ test.describe(" NOSEARCH - visit popup ", () => {
   }) => {
     await page.goto("https://www.nosearch.com/");
     await page.locator("text=닫기").click({
-      timeout: 5000,
+      timeout: 30000,
     });
     await page.reload();
     const nosearchDealPopupWrapper = page.locator(
@@ -81,7 +84,7 @@ test.describe(" NOSEARCH - visit popup ", () => {
   }) => {
     await page.goto("https://www.nosearch.com/");
     await page.locator("text=다시 보지 않기").click({
-      timeout: 5000,
+      timeout: 30000,
     });
     await page.reload();
     const nosearchDealPopupWrapper = page.locator(
