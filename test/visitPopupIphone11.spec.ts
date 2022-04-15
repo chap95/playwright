@@ -5,7 +5,6 @@ test.use({
   ...iphone11,
   channel: undefined,
   browserName: "webkit",
-  baseURL: "https://nosearch.com",
 });
 
 test.beforeEach(async ({ context, page }) => {

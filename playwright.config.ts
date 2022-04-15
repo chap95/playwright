@@ -1,6 +1,7 @@
 import { PlaywrightTestConfig } from "@playwright/test";
 const config: PlaywrightTestConfig = {
   use: {
+    baseURL: "https://www.nosearch.com",
     channel: "chrome",
     headless: false,
     viewport: {
@@ -8,7 +9,6 @@ const config: PlaywrightTestConfig = {
       height: 720,
     },
     ignoreHTTPSErrors: true,
-    video: "on-first-retry",
   },
 };
 

@@ -3,7 +3,6 @@ const galaxyS8 = devices["Galaxy S8"];
 
 test.use({
   ...galaxyS8,
-  baseURL: "https://nosearch.com",
 });
 
 test.beforeEach(async ({ context, page }) => {

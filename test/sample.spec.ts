@@ -1,9 +1,5 @@
 import { test, expect } from "@playwright/test";
 
-test.use({
-  baseURL: "https://nosearch.com",
-});
-
 test.beforeEach(async ({ context, page }) => {
   await context.route(`**/popup**`, (route) => {
     route.fulfill({
